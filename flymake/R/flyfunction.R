@@ -37,7 +37,8 @@ permfly <- function(fwfile, bwfile, N = 100, raw = FALSE) {
     calc.stat.df <- function(df) {
         df <- df[,-c(1,2,3)]
         out <- empty #preallocate
-        out <- sapply(1:N,calc.stat,df)
+        #out <- sapply(1:N,calc.stat,df)
+        out <- c_fly(as.matrix(df), treat.group-1, cont.group-1, ind-1, N)
         out
     }
 
